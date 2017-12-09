@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 数据库环境的配置（临时配置） -->
+	<!-- 
+		environments:表示多个数据库环境的配置标签
+		default：当前默认使用的数据库环境
+	 -->
+	 <properties resource="jdbc.properties"></properties>
+	 <environments default="dev">
+	 	<!-- 开发数据库环境的配置 -->
+	 	<!-- 
+	 		environment:表示一个数据库环境配置的标签
+	 		id：表示唯一标识一个数据库环境
+	 	 -->
+	 	 <environment id="dev">
+	 	 	<!-- 事务管理的配置 -->
+	 	 	<!-- 
+	 	 		transactionManager:表示事务管理的配置标签
+	 	 		type：表示事务管理的类型，由于MyBatis是对JDBC的封装，所以通常使用JDBC的事务
+	 	 	 -->
+	 	 	<transactionManager type="JDBC"/>
+	 	 	<!-- 数据源配置：driver,url,username,password -->
+	 	 	<!-- 
+	 	 		dataSource:表示数据源的配置标签
+	 	 		type:表示数据源的类型，标识是否支持数据库连接池
+	 	 			POOLED：表示支持数据库连接池的数据源
+	 	 			UNPOOLED：表示不支持数据库连接池的数据源
+	 	 	 -->
+	 	 	 <dataSource type="POOLED">
+	 	 	 	<property name="driver" value="${jdbc.driver}"/>
+	 	 	 	<property name="url" value="${jdbc.url}"/>
+	 	 	 	<property name="username" value="${jdbc.username}"/>
+	 	 	 	<property name="password" value="${jdbc.password}"/>
+	 	 	 </dataSource>
+	 	 </environment>
+	 </environments>
+	 	<!-- 配置映射文件 -->
+	 	<mappers>
+	 		<!-- 通过映射文件在编译后类目录下的相对路径加载映射文件
+	 			resource:用来指定映射文件的路径
+	 		 -->
+	 		 <mapper resource="cn/itcast/mapper/UserMapper.xml"/>
+	 		 <mapper resource="cn/itcast/mapper/OrderMapper.xml"/>
+	 		 <mapper resource="cn/itcast/mapper/OrderMapper2.xml"/>
+	 	</mappers>
+</configuration>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order">
+	<insert id="insertOrderData" parameterType="cn.itcast.pojo.Order">
+		<selectKey order="BEFORE" keyProperty="orderId" resultType="String">
+			SELECT UUID()
+		</selectKey>
+		
+		INSERT INTO order1
+		(orderId, userId, orderStatus, goodsId, createDateTime) 
+		VALUES
+		(#{orderId}, #{userId}, #{orderStatus}, #{goodsId}, now());
+	</insert>
+	
+</mapper>
