@@ -39,4 +39,10 @@ public class MyTest2 {
 		System.out.println(userList);
 		sqlSession.close();
 	}
+	// git测试
+		@Test
+		public void test5() throws Exception {
+			System.out.println("创建分支issu99，在分支上完成开发");
+		}
+
 }
